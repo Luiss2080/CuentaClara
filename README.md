@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="docs/assets/logo.svg" alt="SocioFit" width="96" height="96"/>
+<img src="docs/assets/logo.svg" alt="CuentaClara" width="96" height="96"/>
 
-# SocioFit
+# CuentaClara
 
-**Control de membresías para gimnasios y academias, con carnet QR, vencimientos y recordatorios por WhatsApp. Offline-first, sin costos mensuales.**
+**Libreta digital de fiados para tiendas de barrio: quién debe, cuánto y desde cuándo, con estados de cuenta en PDF. Sin internet.**
 
 <p>
 <img src="https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white" alt="Expo"/>
@@ -22,12 +22,12 @@
 
 ## 🚀 Características
 
-- **Socios y planes**: alta de socios con foto, plan mensual/trimestral/anual y precio libre.
-- **Carnet QR**: cada socio tiene un QR para registrar asistencia en la puerta.
-- **Vencimientos**: panel con socios por vencer, vencidos y al día.
-- **Recordatorios locales**: notificaciones en el dispositivo, sin servidor.
-- **Cobro por WhatsApp**: mensaje de pago pre-llenado con un toque.
-- **Caja diaria**: pagos del día y resumen mensual.
+- **Clientes y saldos**: deuda total y antigüedad por cliente.
+- **Fiados y abonos**: registra ventas a crédito y pagos parciales.
+- **Estado de cuenta en PDF** para compartir.
+- **Recordatorio de cobro** por WhatsApp pre-llenado.
+- **Resumen**: total por cobrar y mayores deudores.
+- **Respaldo local** exportable.
 
 > Sin servidores, sin suscripciones y sin servicios de pago: todos los datos viven en el dispositivo (SQLite).
 
@@ -42,23 +42,22 @@
 
 ### Modelo de datos
 
-- `socios (id, nombre, telefono, foto, creado_en)`
-- `planes (id, nombre, dias, precio)`
-- `membresias (id, socio_id, plan_id, inicio, vence, pagado)`
-- `asistencias (id, socio_id, fecha_hora)`
+- `clientes (id, nombre, telefono, limite)`
+- `movimientos (id, cliente_id, tipo, monto, nota, fecha)`
+- `ajustes (clave, valor)`
 
 ## 🗺️ Roadmap
 
 - [ ] 1. Estructura base y navegación
-- [ ] 2. Socios, planes y membresías
-- [ ] 3. Escaneo QR y asistencias
-- [ ] 4. Recordatorios y WhatsApp
-- [ ] 5. Respaldo/exportación local
+- [ ] 2. Clientes y movimientos
+- [ ] 3. Estados de cuenta en PDF
+- [ ] 4. Recordatorios por WhatsApp
+- [ ] 5. Respaldo y restauración
 
 ## 📂 Estructura
 
 ```text
-SocioFit/
+CuentaClara/
 ├── app/            # Pantallas y rutas (Expo Router)
 ├── src/
 │   ├── db/         # Esquema y consultas SQLite
@@ -73,8 +72,8 @@ SocioFit/
 Requisitos: Node.js 20+ y la app Expo Go (o un emulador).
 
 ```bash
-git clone https://github.com/Luiss2080/SocioFit.git
-cd SocioFit
+git clone https://github.com/Luiss2080/CuentaClara.git
+cd CuentaClara
 npm install
 npx expo start
 ```
